@@ -1,12 +1,4 @@
-﻿### Evoke3 Api
 
-This project serves as middleware between Evoke3 UI and our Azure DevOps CD pipeline
-
-If you would like to test locally, clone this repository in a directory of your choosing
-
-```` shell
-git clone http://tfs.eprod.com/LS/ReleaseManagement/_git/evoke3-middleware
-````
 
 After installing the repository you can run the application locally, containerized, or run the deployable chart to Firebird K8s
 
