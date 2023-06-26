@@ -12,14 +12,14 @@ python src/server.py
 to run the application in a container:
 
 ```` shell
-docker run -d -p 5000:5000 --name evoke3-api peezus/k8s-deploy-parameters
+docker run -d -p 5000:5000 --name api peezus/k8s-deploy-parameters
 ````
 
-to run the evoke3-api in our kubernetes cluster:
+to run the api in our kubernetes cluster:
 
 ```` shell
 cd infra/
 kubectl create namespace param-injector
-helm install evoke3-api param-injector.chart/ --namespace param-injector --values param-injector.chart/values.yaml
+helm install <chart-name> param-injector.chart/ --namespace param-injector --values param-injector.chart/values.yaml
 ````
 
