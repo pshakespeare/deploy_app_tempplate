@@ -1,0 +1,197 @@
+# Default values for firebird-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+podName: "sho14dev"
+
+artifactory: "ewogICJhdXRocyI6IHsKICAgICJhcnRpZmFjdG9yeS1wcmQuZXByb2QuY29tIjogewogICAgICAiYXV0aCI6ICJiSEp2WTJoaE9rRlFPSGt6WkVwYWRITlJNV2cxWVZOd2FuazVjRmxZTldZNE1nPT0iLAogICAgICAiZW1haWwiOiAiTFJvY2hhQGVwcm9kLmNvbSIKICAgIH0KICB9Cn0K"
+
+common:
+  limits:
+    cpu: 1
+    memory: 2Gi
+  saltIV: "!QAZ2WSX#EDC4RFV"
+  saltKey: "5TGB&amp;YHN7UJM(IK&lt;"
+
+
+rabbitMQ:
+  virtualHost: "local_rabbitmq" #"rmteam01dev"
+  host: "D3GJH853" #"VMESTREAM202.eprod.com"
+  port: 5672
+  useTLS: false
+  username: "local_rabbitmq" #"svc-RabbitMQ"
+  password: "1breakthings!" #"RabbitMQpwd"
+elasticSearch:
+  url: "https://estreamelasticlocal.eprod.com"
+  apiKeyName: "testing124"
+  apiKeyId: "4q1yP4QBdbze4-vfOOBK"
+  apiKey: "qVQ2Nl3gQK24lkMWIjCP0A"
+exceptionless:
+  apiKey: "secret"
+  serverUrl: "https://exceptionless.eprod.com:5000"
+sql:
+  # QUIRK1: Use Single or NO quotes in order to bypass escaping the single backslash !! #
+  # Escaping the backslash here (double slash) directly translates to double slashes in SharedConectionStrings XML file
+  dataSource: 'estreamdbdev\devloc' # 'TSESTMAG02,24331\psr'  'estreamdbtest\testloc'
+  fciDataSource: 'estreamdbdev\devloc'
+  fciDataName: "copy_fci_cis_historian_mmb"
+  userId: "evolveuser"
+  password: "clay.1964"
+redis:
+  repository: "redis/redis-stack"
+  useCaching: "true"
+  tag: "latest"
+  service:
+    name: "redis-svc"
+    port: 6379
+zookeeper:
+  repository: "confluentinc/cp-zookeeper"
+  tag: 7.0.1
+  service:
+    name: "zookeeper-svc"
+    port: 2181
+kafka:
+  repository: "confluentinc/cp-kafka"
+  tag: 7.0.1
+  service:
+    name: "kafka-svc"
+    port: 9092
+controlCenter:
+  repository: "confluentinc/cp-enterprise-control-center"
+  tag: 7.3.0
+  service:
+    name: "control-center-svc"
+
+mpm:
+  repository: "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.mmb.measurementprocessingmanagement"
+  tag: "main-Firebird.Mmb.Mpm.Service-20230420.2"
+  logIndexFormat: "mpm-Log"
+  maxProcessing: 20
+  replicas: 1
+  port: 5028
+
+mrs:
+  repository: artifactory-prd.eprod.com/estrm-ls-test-local/firebird.mmb.measurementretrieval
+  tag: "main-20230406.3"
+  replicas: 1
+  windowInDays: 10
+  pollingInterval: 60
+  pollingDaily: 60
+  pollingBatch: 60
+
+soms:
+  repository: "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.platform.sagaorchestrationmanagement"
+  tag: "cg-fsl2-conengine-orchengine--20230619.4"
+  replicas: 1
+  service:
+    name: "soms-svc"
+    port: 5068
+
+somsConfiguration:
+  repository: "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.platform.sagaorchestrationmanagement"
+  tag: "cg-fsl2-conengine-orchengine-Firebird.Soms.Configuration.Service-20230619.4"
+  replicas: 1
+  service:
+    name: "soms-configuration-svc"
+    port: 5078
+
+somsRegistration:
+  repository: "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.platform.sagaorchestrationmanagement"
+  tag: "cg-fsl2-conengine-orchengine-Firebird.Soms.Registration.Service-20230619.4"
+  replicas: 1
+  service:
+    name: "soms-registration-svc"
+    port: 5088
+
+somsTest:
+  secret: "secret"
+  repository: "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.platform.sagaorchestrationmanagement"
+  tag: "main-Firebird.Soms.Test-20230601.19"
+  replicas: 0
+
+somsUI:
+  replicas: 1
+  front:
+    repository: "artifactory-prd.eprod.com/estrm-ls-test-local/firebird-soms-ui-front"
+    tag: "latest"
+  back:
+    repository: "artifactory-prd.eprod.com/estrm-ls-test-local/firebird-soms-ui-back"
+    tag: "latest"
+
+psc:
+  repository: "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.mmb.participatingservices"
+  DiTicket:
+    name: "estream-distribution-ticket-service"
+    tag: "cg-fslv2-client-Estream.Distribution.Ticket.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  AccountingOverShortReport:
+    name: "estream-mmb-accountingovershortreport-service"
+    tag: "cg-fslv2-client-Estream.MMB.AccountingOverShortReport.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  LabAnalysis:
+    name: "estream-mmb-labanalysis-service"
+    tag: "cg-fslv2-client-Estream.MMB.LabAnalysis.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  MMBTicket:
+    name: "estream-mmb-ticket-service"
+    tag: "cg-fslv2-client-Estream.MMB.Ticket.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  TicketSearch:
+    name: "estream-mmb-ticketsearch-service"
+    tag: "cg-fslv2-client-Estream.MMB.TicketSearch.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  Measurement:
+    name: "estream-mmb-measurement-service"
+    tag: "cg-fslv2-client-Estream.Mmb.Measurement.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  LineFill:
+    name: "estream-mmb-linefill-service"
+    tag: "cg-fslv2-client-Estream.MMB.LineFill.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  MeasurementProcessing:
+    name: "estream-mmb-measurementprocessing-service"
+    tag: "cg-fslv2-client-Estream.MMB.MeasurementProcessing.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  OperationalOverShortReport:
+    name: "estream-mmb-operationalovershortreport-service"
+    tag: "cg-fslv2-client-Estream.MMB.OperationalOverShortReport.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  OverShortMovement:
+    name: "estream-mmb-overshortmovement-service"
+    tag: "cg-fslv2-client-Estream.MMB.OverShortMovement.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  PhysicalBatch:
+    name: "estream-mmb-physicalbatch-service"
+    tag: "cg-fslv2-client-Estream.MMB.PhysicalBatch.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  PhysicalBatchOverShortReport:
+    name: "estream-mmb-physicalbatchovershortreport-service"
+    tag: "cg-fslv2-client-Estream.MMB.PhysicalBatchOverShortReport.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  ValidationAggregator:
+    name: "estream-mmb-validationaggregator-service"
+    tag: "cg-fslv2-client-Estream.MMB.ValidationAggregator.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  ValidationRunner:
+    name: "estream-mmb-validationrunner-service"
+    tag: "cg-fslv2-client-Estream.MMB.ValidationRunner.Service-20230618.1"
+    replicas: 1
+    port: 5160
+  WellInventory:
+    name: "estream-mmb-wellinventory-service"
+    tag: "cg-fslv2-client-Estream.MMB.WellInventory.Service-20230618.1"
+    replicas: 1
+    port: 5160

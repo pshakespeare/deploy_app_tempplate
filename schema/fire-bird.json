@@ -1,0 +1,158 @@
+{
+
+    
+    "mpm": {
+        "repository": "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.mmb.measurementprocessingmanagement",
+        "tag": "main-Firebird.Mmb.Mpm.Service-20230420.2",
+        "logIndexFormat": "mpm-Log",
+        "maxProcessing": 20,
+        "replicas": 1,
+        "port": 5028
+    },
+    "mrs": {
+        "repository": "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.mmb.measurementretrieval",
+        "tag": "main-20230406.3",
+        "replicas": 1,
+        "windowInDays": 10,
+        "pollingInterval": 60,
+        "pollingDaily": 60,
+        "pollingBatch": 60
+    },
+    "soms": {
+        "repository": "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.platform.sagaorchestrationmanagement",
+        "tag": "cg-fsl2-conengine-orchengine--20230619.4",
+        "replicas": 1,
+        "service": {
+            "name": "soms-svc",
+            "port": 5068
+        }
+    },
+    "somsConfiguration": {
+        "repository": "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.platform.sagaorchestrationmanagement",
+        "tag": "cg-fsl2-conengine-orchengine-Firebird.Soms.Configuration.Service-20230619.4",
+        "replicas": 1,
+        "service": {
+            "name": "soms-configuration-svc",
+            "port": 5078
+        }
+    },
+    "somsRegistration": {
+        "repository": "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.platform.sagaorchestrationmanagement",
+        "tag": "cg-fsl2-conengine-orchengine-Firebird.Soms.Registration.Service-20230619.4",
+        "replicas": 1,
+        "service": {
+            "name": "soms-registration-svc",
+            "port": 5088
+        }
+    },
+    "somsTest": {
+        "secret": "secret",
+        "repository": "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.platform.sagaorchestrationmanagement",
+        "tag": "main-Firebird.Soms.Test-20230601.19",
+        "replicas": 0
+    },
+    "somsUI": {
+        "replicas": 1,
+        "front": {
+            "repository": "artifactory-prd.eprod.com/estrm-ls-test-local/firebird-soms-ui-front",
+            "tag": "latest"
+        },
+        "back": {
+            "repository": "artifactory-prd.eprod.com/estrm-ls-test-local/firebird-soms-ui-back",
+            "tag": "latest"
+        }
+    },
+    "psc": {
+        "repository": "artifactory-prd.eprod.com/estrm-ls-test-local/firebird.mmb.participatingservices",
+        "DiTicket": {
+            "name": "estream-distribution-ticket-service",
+            "tag": "cg-fslv2-client-Estream.Distribution.Ticket.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "AccountingOverShortReport": {
+            "name": "estream-mmb-accountingovershortreport-service",
+            "tag": "cg-fslv2-client-Estream.MMB.AccountingOverShortReport.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "LabAnalysis": {
+            "name": "estream-mmb-labanalysis-service",
+            "tag": "cg-fslv2-client-Estream.MMB.LabAnalysis.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "MMBTicket": {
+            "name": "estream-mmb-ticket-service",
+            "tag": "cg-fslv2-client-Estream.MMB.Ticket.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "TicketSearch": {
+            "name": "estream-mmb-ticketsearch-service",
+            "tag": "cg-fslv2-client-Estream.MMB.TicketSearch.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "Measurement": {
+            "name": "estream-mmb-measurement-service",
+            "tag": "cg-fslv2-client-Estream.Mmb.Measurement.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "LineFill": {
+            "name": "estream-mmb-linefill-service",
+            "tag": "cg-fslv2-client-Estream.MMB.LineFill.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "MeasurementProcessing": {
+            "name": "estream-mmb-measurementprocessing-service",
+            "tag": "cg-fslv2-client-Estream.MMB.MeasurementProcessing.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "OperationalOverShortReport": {
+            "name": "estream-mmb-operationalovershortreport-service",
+            "tag": "cg-fslv2-client-Estream.MMB.OperationalOverShortReport.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "OverShortMovement": {
+            "name": "estream-mmb-overshortmovement-service",
+            "tag": "cg-fslv2-client-Estream.MMB.OverShortMovement.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "PhysicalBatch": {
+            "name": "estream-mmb-physicalbatch-service",
+            "tag": "cg-fslv2-client-Estream.MMB.PhysicalBatch.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "PhysicalBatchOverShortReport": {
+            "name": "estream-mmb-physicalbatchovershortreport-service",
+            "tag": "cg-fslv2-client-Estream.MMB.PhysicalBatchOverShortReport.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "ValidationAggregator": {
+            "name": "estream-mmb-validationaggregator-service",
+            "tag": "cg-fslv2-client-Estream.MMB.ValidationAggregator.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "ValidationRunner": {
+            "name": "estream-mmb-validationrunner-service",
+            "tag": "cg-fslv2-client-Estream.MMB.ValidationRunner.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        },
+        "WellInventory": {
+            "name": "estream-mmb-wellinventory-service",
+            "tag": "cg-fslv2-client-Estream.MMB.WellInventory.Service-20230618.1",
+            "replicas": 1,
+            "port": 5160
+        }
+    }
+}
